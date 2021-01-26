@@ -6,42 +6,51 @@ using System.Threading.Tasks;
 
 namespace MyCustomList
 {
-    public class CustomList
+    public class CustomList<T>
     {
-        // member variables
-
+        // member variables        
+        private T[] listArray;
+        private int count;
+        private int capacity;
+        public int Count = 0;
+        public int Capacity = 4;
 
         // constructor
+        public CustomList()
+        {
+            count = 0;
+            capacity = 4;
+            listArray = new T[capacity];
+        }
 
 
         // member methods
-        //public void Add()
-        //{
-        //    public void AddItemToCustomList_CheckForCorrectIndex()
-        //    {
-        //        // Arrange
-        //        CustomList<int> list = new CustomList<int>();
-        //        //int[] listArray = new int[2];
-        //        //int counter = 0;
-        //        //int capacity = 4;
-        //        int actual;
-        //        int expected = 30;
+        public void Add(T item)
+        {
+            if (count == capacity)
+            {
+                int counter = 0;
+                capacity = capacity * 2;
+                T[] newListArray = new T[capacity];
+                foreach (T listItem in listArray)
+                {
+                    newListArray[counter] = listItem;
+                    counter++;
+                }
+                listArray = newListArray;
+            }
 
-        //        // Act
-        //        listArray[0] = 10;
-        //        listArray[1] = 20;
-        //        listArray[2] = 30;
-        //        if (counter == capacity)
-        //        {
-        //            listArray.CopyTo(listArray, counter);
-        //            int[] newListArray = new int[capacity * 2];
-        //        }
-        //        actual = listArray[2];
+            listArray[count] = item;
+            count++;
+        }
 
-        //        // Assert
-        //        Assert.AreEqual(expected, actual);
-        //    }
-        //}
+        public T this[int index]
+        {
+            get
+            {
+                return listArray[index];
+            }
+        }
 
     }
 }
