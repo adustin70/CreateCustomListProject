@@ -109,7 +109,7 @@ namespace MyCustomListUnitTestProject
 
             // Act
             list.Add(myAge);
-            actual = list[1];
+            actual = list[0];
 
             // Assert
             Assert.AreEqual(expected, actual);

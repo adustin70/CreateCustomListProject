@@ -12,8 +12,8 @@ namespace MyCustomList
         private T[] listArray;
         private int count;
         private int capacity;
-        public int Count = 0;
-        public int Capacity = 4;
+        public int Count { get => count; }
+        public int Capacity { get => capacity; }
 
         // constructor
         public CustomList()
