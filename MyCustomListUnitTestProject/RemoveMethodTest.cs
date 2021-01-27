@@ -1,19 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MyCustomList;
 
 namespace MyCustomListUnitTestProject
 {
     [TestClass]
-    class RemoveMethodTest
+    public class RemoveMethodTest
     {
-
         [TestMethod]
-
         public void RemoveItemFromCustomList_CheckCountEquals0()
         {
             // Arrange
@@ -42,7 +36,7 @@ namespace MyCustomListUnitTestProject
             int testNumber2 = 84;
             int testNumber3 = 1;
             int actual;
-            int expected = 3;
+            int expected = 1;
 
             // Act
             list.Add(testNumber);
@@ -71,7 +65,7 @@ namespace MyCustomListUnitTestProject
             double doubleNumber2 = 8.6;
             double doubleNumber3 = 1.0;
             double actual;
-            double expected = 3;
+            double expected = doubleNumber3;
 
             // Act
             list.Add(doubleNumber);
@@ -125,7 +119,7 @@ namespace MyCustomListUnitTestProject
 
         [TestMethod]
 
-        public void RemoveItemsFromCustomList_CheckThatCapacityReturnsTo4()
+        public void RemoveItemsFromCustomList_CheckItemAtIndex2()
         {
             // Arrange
             CustomList<string> list = new CustomList<string>();
@@ -137,8 +131,8 @@ namespace MyCustomListUnitTestProject
             string testString5 = "Bees";
             string testString6 = "Knees";
             string testString7 = "!";
-            int actual;
-            int expected = 4;
+            string actual;
+            string expected = "Is";
 
             // Act
             list.Add(testString);
@@ -151,12 +145,12 @@ namespace MyCustomListUnitTestProject
             list.Add(testString7);
 
             list.Remove(testString4);
+            list.Remove(testString2);
             list.Remove(testString5);
-            list.Remove(testString6);
             list.Remove(testString7);
 
 
-            actual = list.Capacity;
+            actual = list[2];
 
 
             // Assert
