@@ -52,5 +52,22 @@ namespace MyCustomList
             }
         }
 
+        public void Remove(T item)
+        {
+            T[] newListArray = new T[capacity];
+            int counter = 0;
+            foreach (T listItem in listArray)
+            {
+                newListArray[counter] = listItem;
+                counter++;
+                if (EqualityComparer<T>.Default.Equals(item, listItem))
+                {
+                    counter--;
+                    newListArray[counter] = listItem;
+                }
+            }
+            listArray = newListArray;
+            count--;
+        }
     }
 }
