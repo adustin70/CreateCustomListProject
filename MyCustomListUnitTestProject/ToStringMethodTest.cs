@@ -14,12 +14,12 @@ namespace MyCustomListUnitTestProject
             CustomList<int> list = new CustomList<int>();
             int intToString = 5;
             string actual;
-            string expected = "???";
+            string expected = "5";
 
             // Act
             list.Add(intToString);
-            list.ConvertToString();
-            actual = list.ConvertToString();
+
+            actual = list.ToString();
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -29,15 +29,15 @@ namespace MyCustomListUnitTestProject
         public void CustomListConvertToString_CheckThatListDoubleConvertsToString()
         {
             // Arrange
-            CustomList<double> list = new CustomList<double>();
-            double doubleToString = 556;
+            CustomList<int> list = new CustomList<int>();
+            int doubleToString = 556;
             string actual;
-            string expected = "???";
+            string expected = "556";
 
             // Act
             list.Add(doubleToString);
-            list.ConvertToString();
-            actual = list.ConvertToString();
+
+            actual = list.ToString();
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -54,7 +54,7 @@ namespace MyCustomListUnitTestProject
             int intToString3 = 3;
 
             string actual;
-            string expected = "???";
+            string expected = "5623873";
 
             // Act
             list.Add(intToString);
@@ -62,32 +62,8 @@ namespace MyCustomListUnitTestProject
             list.Add(intToString2);
             list.Add(intToString3);
 
-            list.ConvertToString();
-            actual = list.ConvertToString();
-
-            // Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void CustomListToString_CheckThatListStringDoesNotConvert()
-        {
-            // Arrange
-            CustomList<string> list = new CustomList<string>();
-            string testString = "This";
-            string testString1 = "Is";
-            string testString2 = "Challenging";
-            string actual;
-            string expected = "???";
-
-            // Act
-            list.Add(testString);
-            list.Add(testString1);
-            list.Add(testString2);
-            list.Add(testString3);
-
-            list.ConvertToString();
-            actual = "???";
+            
+            actual = list.ToString();
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -98,14 +74,33 @@ namespace MyCustomListUnitTestProject
         {
             // Arrange
             CustomList<decimal> list = new CustomList<decimal>();
-            decimal testNum = 2.0;
+            decimal testNum = 2.0m;
             string actual;
-            string expected = "???";
+            string expected = "2.0";
 
             // Act
             list.Add(testNum);
-            list.ConvertToString();
-            actual = list.ConvertToString();
+
+            actual = list.ToString();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void CustomListConvertToString_CheckThatNegativeIntConvertsToString()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            int intToString = -5;
+            string actual;
+            string expected = "-5";
+
+            // Act
+            list.Add(intToString);
+
+            actual = list.ToString();
 
             // Assert
             Assert.AreEqual(expected, actual);

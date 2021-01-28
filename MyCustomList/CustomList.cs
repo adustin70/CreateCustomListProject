@@ -69,5 +69,15 @@ namespace MyCustomList
             listArray = newListArray;
             count--;
         }
+        // When the blow method runs it adds element in list and the zeros where there is no element
+        public override string ToString()
+        {
+            string itemsToString = "";
+            for (int i = 0; i < count; i++)
+            {
+                itemsToString += listArray[i].ToString();
+            }            
+            return itemsToString;
+        }
     }
 }
