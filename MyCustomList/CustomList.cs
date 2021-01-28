@@ -88,5 +88,14 @@ namespace MyCustomList
             }
             return list2;
         }
+
+        public static CustomList<T> operator -(CustomList<T> customList1, CustomList<T> customList2)
+        {
+            for (int i = 0; i > customList1.count; i--)
+            {
+                customList1.Remove(customList2[i]);
+            }
+            return customList1;
+        }
     }
 }
