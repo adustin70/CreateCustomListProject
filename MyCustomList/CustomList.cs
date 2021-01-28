@@ -69,7 +69,7 @@ namespace MyCustomList
             listArray = newListArray;
             count--;
         }
-        // When the blow method runs it adds element in list and the zeros where there is no element
+
         public override string ToString()
         {
             string itemsToString = "";
@@ -78,6 +78,15 @@ namespace MyCustomList
                 itemsToString += listArray[i].ToString();
             }            
             return itemsToString;
+        }
+
+        public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
+        {
+            for (int i = 0; i < list1.count; i++)
+            {
+                list2.Add(list1[i]);
+            }
+            return list2;
         }
     }
 }
