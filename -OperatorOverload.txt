@@ -1,0 +1,34 @@
+- Operator Overload Method
+
+
+public static CustomList<T> operator -(CustomList<T> customList1, CustomList<T> customList2)
+
+
+Parameters:  The list to be subtracted from one and other
+
+
+Returns:  First list1 after subtracting list2 from list1
+
+
+static void Main(string[] args)
+        {
+            // Instantiate new list and add them together so we have a list to remove
+            CustomList<double> list = new CustomList<double>();
+            list.Add(16);
+            list.Add(41);
+            list.Add(84);
+
+            CustomList<double> list2 = new CustomList<double>();
+            list2.Add(73);
+            list2.Add(9);
+
+            // Creating new list to capture above list being added together
+            CustomList<double> customList = list + list2;
+            // Subtract one list from the other
+            customList = list - list2;
+            
+            Console.WriteLine(customList);
+            Console.ReadLine();
+        }
+
+Output will be : 164184
