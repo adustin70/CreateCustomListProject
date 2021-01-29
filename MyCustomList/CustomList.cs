@@ -97,5 +97,14 @@ namespace MyCustomList
             }
             return customList1;
         }
+
+        public static IEnumerable<T> Zip(CustomList<T> customList, CustomList<T> customList1)
+        {
+            for (int i = 0; i < customList.count; i++)
+            {
+                yield return customList[i];
+                yield return customList1[i];
+            }
+        }
     }
 }
