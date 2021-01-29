@@ -13,13 +13,13 @@ namespace MyCustomListUnitTestProject
             // Arrange
             CustomList<int> zipList1 = new CustomList<int>();
             int testZipNumber1 = 2;
-            int testZipNumber2 = 8;
+            int testZipNumber2 = 6;
 
             CustomList<int> zipList2 = new CustomList<int>();
             int list2ZipNumber1 = 4;
-            int list2ZipNumber2 = 6;
+            int list2ZipNumber2 = 8;
 
-            CustomList<int> newZipList = zipList1.Zip(zipList2);
+            CustomList<int> customList = new CustomList<int>();
 
             int actual;
             int expected = 4;
@@ -30,8 +30,9 @@ namespace MyCustomListUnitTestProject
 
             zipList2.Add(list2ZipNumber1);
             zipList2.Add(list2ZipNumber2);
+            customList = zipList1.Zip(zipList2);
 
-            actual = newZipList[1];
+            actual = customList[1]; 
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -49,10 +50,8 @@ namespace MyCustomListUnitTestProject
             int list2ZipNumber1 = 2;
             int list2ZipNumber2 = 4;
 
-            CustomList<int> newZipList = zipList1.Zip(zipList2);
-
             CustomList<int> actual;
-            CustomList<int> expected = newZipList;
+            CustomList<int> expected = zipList1;
 
             // Act
             zipList1.Add(testZipNumber1);
@@ -60,8 +59,9 @@ namespace MyCustomListUnitTestProject
 
             zipList2.Add(list2ZipNumber1);
             zipList2.Add(list2ZipNumber2);
+            zipList1.Zip(zipList2);
 
-            actual = newZipList;
+            actual = zipList1;
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -78,18 +78,17 @@ namespace MyCustomListUnitTestProject
             double theirNumber = 52;
             double theirNumber2 = 8;
 
-            CustomList<double> newZipList = zipList1.Zip(zipList2);
-
             CustomList<double> actual;
-            CustomList<double> expected = newZipList;
+            CustomList<double> expected = zipList1;
 
             // Act
             zipList1.Add(myNumber1);
 
             zipList2.Add(theirNumber);
             zipList2.Add(theirNumber2);
+            zipList1.Zip(zipList2);
 
-            actual = newZipList;
+            actual = zipList1;
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -109,10 +108,8 @@ namespace MyCustomListUnitTestProject
             string list2TestString2 = "To";
             string list2TestString3 = "This";
 
-            CustomList<string> newZipList = zipList1.Zip(zipList2);
-
             CustomList<string> actual;
-            CustomList<string> expected = newZipList;
+            CustomList<string> expected = zipList1;
 
             // Act
             zipList1.Add(zipTestString1);
@@ -122,46 +119,29 @@ namespace MyCustomListUnitTestProject
             zipList2.Add(list2TestString1);
             zipList2.Add(list2TestString2);
             zipList2.Add(list2TestString3);
+            zipList1.Zip(zipList2);
 
-
-            actual = newZipList;
+            actual = zipList1;
 
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void CustomListZip_CheckThatMultipleListZipTogether()
+        public void CustomListZip_CheckThatEmptyListZipTogether()
         {
             // Arrange
-            CustomList<int> zipList1 = new CustomList<int>();
-            int testZipNumber1 = 2;
-            int testZipNumber2 = 8;
+            CustomList<int> zipList1 = new CustomList<int>();           
 
             CustomList<int> zipList2 = new CustomList<int>();
-            int list2ZipNumber1 = 4;
-            int list2ZipNumber2 = 6;
-
-            CustomList<int> zipList3 = new CustomList<int>();
-            int list3ZipNumber1 = 1;
-            int list3ZipNumber2 = 3;
-
-            CustomList<int> newZipList = zipList3.Zip(zipList2, zipList1);
 
             CustomList<int> actual;
-            CustomList<int> expected = newZipList;
+            CustomList<int> expected = zipList1;
 
             // Act
-            zipList1.Add(testZipNumber1);
-            zipList1.Add(testZipNumber2);
+            zipList1.Zip(zipList2);
 
-            zipList2.Add(list2ZipNumber1);
-            zipList2.Add(list2ZipNumber2);
-
-            zipList3.Add(list3ZipNumber1);
-            zipList3.Add(list3ZipNumber2);
-
-            actual = newZipList;
+            actual = zipList1;
 
             // Assert
             Assert.AreEqual(expected, actual);

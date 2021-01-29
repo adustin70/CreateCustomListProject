@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCustomList
 {
-    public class CustomList<T>
+    public class CustomList<T>// : IEnumerable
     {
         // member variables        
         private T[] listArray;
@@ -98,13 +99,38 @@ namespace MyCustomList
             return customList1;
         }
 
-        public static IEnumerable<T> Zip(CustomList<T> customList, CustomList<T> customList1)
+        public CustomList<T> Zip(CustomList<T> customList)
         {
-            for (int i = 0; i < customList.count; i++)
+            CustomList<T> newZipperList = new CustomList<T>();
+            int newCount = 0;
+            if (count > customList.count)
             {
-                yield return customList[i];
-                yield return customList1[i];
+                newCount = count;
             }
+            else if (customList.count > count)
+            {
+                newCount = customList.count;
+            }
+            else if (count == customList.count)
+            {
+                newCount = count + customList.count;
+            }
+
+            for (int i = 0; i < newCount; i++)
+            {
+                if (count > 0)
+                {
+                    newZipperList.Add(listArray[i]);
+                    count--;
+                }
+
+                if (customList.count > 0)
+                {
+                    newZipperList.Add(customList[i]);
+                    customList.count--;
+                }
+            }
+            return newZipperList;
         }
     }
 }
