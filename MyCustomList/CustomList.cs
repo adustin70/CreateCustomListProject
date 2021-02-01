@@ -58,7 +58,7 @@ namespace MyCustomList
         {
             get
             {
-                if (count < index || index < 0)
+                if (index >= count || index < 0)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -69,7 +69,7 @@ namespace MyCustomList
             }
             set
             {
-                if (count < index || index < 0)
+                if (index >= count || index < 0)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -113,7 +113,8 @@ namespace MyCustomList
             CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < list1.count; i++)
             {
-                newList = list2 + list1;
+                list1.Add(list2[i]);
+                newList.Add(list1[i]);
             }
             return newList;
         }
@@ -123,7 +124,8 @@ namespace MyCustomList
             CustomList<T> newRemoveList = new CustomList<T>();
             for (int i = 0; i > customList1.count; i--)
             {
-                newRemoveList = customList1 - customList2;
+                customList1.Remove(customList2[i]);
+                newRemoveList.Add(customList1[i]);
             }
             return newRemoveList;
         }
