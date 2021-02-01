@@ -32,24 +32,26 @@ namespace MyCustomList
         // member methods
         public void Add(T item)
         {
+            if (count == capacity)
+            {
+                IncreaseCapacity();
+            }
+
             listArray[count] = item;
             count++;
         }
 
         public void IncreaseCapacity()
-        {
-            if (count == capacity)
+        {            
+            int counter = 0;
+            capacity = capacity * 2;
+            T[] newListArray = new T[capacity];
+            foreach (T listItem in listArray)
             {
-                int counter = 0;
-                capacity = capacity * 2;
-                T[] newListArray = new T[capacity];
-                foreach (T listItem in listArray)
-                {
-                    newListArray[counter] = listItem;
-                    counter++;
-                }
-                listArray = newListArray;
+                newListArray[counter] = listItem;
+                counter++;
             }
+            listArray = newListArray;            
         }
 
         public T this[int index]
