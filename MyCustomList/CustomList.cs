@@ -108,20 +108,22 @@ namespace MyCustomList
 
         public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
         {
+            CustomList<T> newList = new CustomList<T>();
             for (int i = 0; i < list1.count; i++)
             {
-                list2.Add(list1[i]);
+                newList = list2 + list1;
             }
-            return list2;
+            return newList;
         }
 
         public static CustomList<T> operator -(CustomList<T> customList1, CustomList<T> customList2)
         {
+            CustomList<T> newRemoveList = new CustomList<T>();
             for (int i = 0; i > customList1.count; i--)
             {
-                customList1.Remove(customList2[i]);
+                newRemoveList = customList1 - customList2;
             }
-            return customList1;
+            return newRemoveList;
         }
 
         public CustomList<T> Zip(CustomList<T> customList)
