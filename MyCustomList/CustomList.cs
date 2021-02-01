@@ -14,7 +14,11 @@ namespace MyCustomList
         private int count;
         private int capacity;
         public int Count { get => count; }
-        public int Capacity { get => capacity; }
+        public int Capacity 
+        { 
+            get => capacity;
+            set { capacity = value; }
+        }
 
         // constructor
         public CustomList()
@@ -94,12 +98,12 @@ namespace MyCustomList
 
         public override string ToString()
         {
-            string itemsToString = "";
+            StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < count; i++)
             {
-                itemsToString += listArray[i].ToString();
-            }            
-            return itemsToString;
+                stringBuilder.Append(listArray[i]);
+            }
+            return stringBuilder.ToString();
         }
 
         public static CustomList<T> operator +(CustomList<T> list1, CustomList<T> list2)
