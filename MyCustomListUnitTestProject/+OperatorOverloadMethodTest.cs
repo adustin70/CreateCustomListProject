@@ -21,7 +21,7 @@ namespace MyCustomListUnitTestProject
             int list2SecondNum = 76;
             int list2ThirdNum = 6;
             CustomList<int> actual;
-            CustomList<int> expected = list2 + list;
+            string expected = "23, 4, 81, 5, 76, 6";
 
             // Act
             list.Add(listFirstNum);
@@ -35,7 +35,7 @@ namespace MyCustomListUnitTestProject
             actual = list2 + list;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace MyCustomListUnitTestProject
             int list2SecondNum = -76;
             int list2ThirdNum = -6;
             CustomList<int> actual;
-            CustomList<int> expected = list2 + list;
+            string expected = "-23, -4, -81, -5, -76, -6";
 
             // Act
             list.Add(listFirstNum);
@@ -66,7 +66,7 @@ namespace MyCustomListUnitTestProject
             actual = list2 + list;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -79,7 +79,7 @@ namespace MyCustomListUnitTestProject
             CustomList<double> doubleList2 = new CustomList<double>();
             double doubleList2Num = 456;
             CustomList<double> actual;
-            CustomList<double> expected = doubleList2 + doubleList;
+            string expected = "789, 456";
 
             // Act
             doubleList.Add(doubleListNum);
@@ -88,7 +88,7 @@ namespace MyCustomListUnitTestProject
             actual = doubleList2 + doubleList;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -103,7 +103,7 @@ namespace MyCustomListUnitTestProject
             double list2NegativeNum = -13;
             double list2NegativeNum2 = -2;
             CustomList<double> actual;
-            CustomList<double> expected = list2 + list;
+            string expected = "-79, -435, -13, -2";
 
             // Act
             list.Add(listNegativeNum);
@@ -115,7 +115,7 @@ namespace MyCustomListUnitTestProject
             actual = list2 + list;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -135,7 +135,7 @@ namespace MyCustomListUnitTestProject
             string list3TestString1 = "For";
             string list3TestString2 = "Coding";
             CustomList<string> actual;
-            CustomList<string> expected = stringList1 + stringList2 + stringList3;
+            string expected = "A, Passion, For, Coding, I, Have, Developed";
 
             // Act
             stringList1.Add(testString1);
@@ -148,10 +148,9 @@ namespace MyCustomListUnitTestProject
             stringList3.Add(list3TestString1);
             stringList3.Add(list3TestString2);
 
-            actual = stringList1 + stringList2 + stringList3;
-            // Yoda says ^^
+            actual = stringList1 + stringList3 + stringList2;
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
     }
 }
