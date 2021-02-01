@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCustomList
 {
-    public class CustomList<T>// : IEnumerable
+    public class CustomList<T>
     {
         // member variables        
         private T[] listArray;
@@ -28,6 +28,12 @@ namespace MyCustomList
         // member methods
         public void Add(T item)
         {
+            listArray[count] = item;
+            count++;
+        }
+
+        public void IncreaseCapacity()
+        {
             if (count == capacity)
             {
                 int counter = 0;
@@ -40,16 +46,31 @@ namespace MyCustomList
                 }
                 listArray = newListArray;
             }
-
-            listArray[count] = item;
-            count++;
         }
 
         public T this[int index]
         {
             get
             {
-                return listArray[index];
+                if (count < index || index < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    return listArray[index];
+                }
+            }
+            set
+            {
+                if (count < index || index < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    listArray[index] = value;
+                }
             }
         }
 
