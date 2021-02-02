@@ -84,14 +84,13 @@ namespace MyCustomList
         {
             T[] newListArray = new T[capacity];
             int counter = 0;
-            foreach (T listItem in listArray)
+            for (int i = 0; i < count; i++)
             {
-                newListArray[counter] = listItem;
+                newListArray[counter] = listArray[i];
                 counter++;
-                if (EqualityComparer<T>.Default.Equals(item, listItem))
+                if (EqualityComparer<T>.Default.Equals(item, listArray[i]))
                 {
                     counter--;
-                    newListArray[counter] = listItem;
                 }
             }
             listArray = newListArray;
@@ -125,9 +124,12 @@ namespace MyCustomList
         public static CustomList<T> operator -(CustomList<T> customList1, CustomList<T> customList2)
         {
             CustomList<T> newRemoveList = new CustomList<T>();
-            for (int i = 0; i > customList1.count; i--)
+            for (int i = 0; i < customList2.count; i++)
             {
-                customList1.Remove(customList2[i]);
+                customList1.Remove(customList2[i]);                
+            }
+            for (int i = 0; i < customList1.count; i++)
+            {
                 newRemoveList.Add(customList1[i]);
             }
             return newRemoveList;

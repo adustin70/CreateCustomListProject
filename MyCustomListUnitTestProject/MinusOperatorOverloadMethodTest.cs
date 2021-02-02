@@ -20,10 +20,10 @@ namespace MyCustomListUnitTestProject
             double list2TestNumber = 23;
             double list2TestNumber2 = 46;
 
-            CustomList<double> customList = list + list2;
+            CustomList<double> customList;
 
             CustomList<double> actual;
-            CustomList<double> expected = customList - list2;
+            string expected = "653756";
 
             // Act
             list.Add(testNumber);
@@ -33,10 +33,12 @@ namespace MyCustomListUnitTestProject
             list2.Add(list2TestNumber);
             list2.Add(list2TestNumber2);
 
+            customList = list + list2;
+
             actual = customList - list2;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -49,19 +51,21 @@ namespace MyCustomListUnitTestProject
             CustomList<double> list2 = new CustomList<double>();
             double list2TestNumber = 3;
 
-            CustomList<double> customList = list + list2;
+            CustomList<double> customList;
 
             CustomList<double> actual;
-            CustomList<double> expected = customList - list2;
+            string expected = "5";
 
             // Act
             list.Add(testNumber);
             list2.Add(list2TestNumber);
 
+            customList = list + list2;
+
             actual = customList - list2;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -72,25 +76,23 @@ namespace MyCustomListUnitTestProject
             int testNumber = 9;
 
             CustomList<int> list2 = new CustomList<int>();
-            int list2TestNumber = 6;
+            int list2TestNumber = 7;
 
-            CustomList<int> list3 = new CustomList<int>();
-            int list3TestNumber = 7;
-
-            CustomList<int> customList = list + list2 + list3;
+            CustomList<int> customList;
 
             CustomList<int> actual;
-            CustomList<int> expected = customList - list - list2;
+            string expected = "9";
 
             // Act
             list.Add(testNumber);
             list2.Add(list2TestNumber);
-            list3.Add(list3TestNumber);
 
-            actual = customList;
+            customList = list + list2;
+
+            actual = customList - list2;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -103,32 +105,28 @@ namespace MyCustomListUnitTestProject
             string testString3 = "Crazy";
 
             CustomList<string> list2 = new CustomList<string>();
-            string list2TestString = "Flamingo";
-
-            CustomList<string> list3 = new CustomList<string>();
             string list3TestString1 = "Remove";
-            string list3TestString2 = "This";
+            string list3TestString2 = "It";
 
-            CustomList<string> customList = list1 + list2 + list3;
+            CustomList<string> customList;
 
             CustomList<string> actual;
-            CustomList<string> expected = customList - list1 - list2;
+            string expected = "ThisIsCrazy";
 
             // Act
             list1.Add(testString1);
             list1.Add(testString2);
             list1.Add(testString3);
 
-            list2.Add(list2TestString);
+            list2.Add(list3TestString1);
+            list2.Add(list3TestString2);
 
-            list3.Add(list3TestString1);
-            list3.Add(list3TestString2);
+            customList = list1 + list2;
 
-
-            actual = customList;
+            actual = customList - list2;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
 
         [TestMethod]
@@ -141,23 +139,22 @@ namespace MyCustomListUnitTestProject
             CustomList<int> list2 = new CustomList<int>();
             int list2TestNumber = 6;
 
-            CustomList<int> list3 = new CustomList<int>();
-            int list3TestNumber = 7;
-
-            CustomList<int> customList = list + list2 + list3;
+            CustomList<int> customList;
 
             CustomList<int> actual;
-            CustomList<int> expected = customList - list - list2 - list3;
+            string expected = "";
 
             // Act
             list.Add(testNumber);
             list2.Add(list2TestNumber);
-            list3.Add(list3TestNumber);
 
-            actual = customList;
+            customList = list + list2;
+            customList = customList - list2;
+
+            actual = customList - list;
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual.ToString());
         }
     }
 }
