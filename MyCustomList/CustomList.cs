@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         // member variables        
         private T[] listArray;
@@ -167,6 +167,14 @@ namespace MyCustomList
                 }
             }
             return newZipperList;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return listArray[i];
+            }
         }
     }
 }
